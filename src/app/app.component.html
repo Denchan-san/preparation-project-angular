@@ -4,7 +4,8 @@
       <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a routerLink="/">Home</a></li>
         <li role="presentation"><a routerLink="/servers">Servers</a></li>
-        <li role="presentation"><a [routerLink]="['users']">Users</a></li>
+        <!-- if we add '/' it just will add our route to the end of the actual route -->
+        <li role="presentation"><a [routerLink]="['/users']">Users</a></li> 
       </ul>
     </div>
   </div>
