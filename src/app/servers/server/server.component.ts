@@ -29,6 +29,6 @@ export class ServerComponent implements OnInit {
   }
 
   onEdit() {
-    this.router.navigate(['edit'], {relativeTo: this.route});  //relativeTo is added to not define the whole route, just add that 'edit' at the end of route that we have retrived
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});  //relativeTo is added to not define the whole route, just add that 'edit' at the end of route that we have retrived
   }
 }
