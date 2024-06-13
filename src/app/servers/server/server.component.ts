@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -12,7 +12,10 @@ export class ServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
 
   constructor(private serversService: ServersService,
-    private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { 
+
+              }
 
   ngOnInit() {
     const id = +this.route.snapshot.params['id']; //Number() or '+'
@@ -25,4 +28,7 @@ export class ServerComponent implements OnInit {
       );
   }
 
+  onEdit() {
+    this.router.navigate(['edit'], {relativeTo: this.route});  //relativeTo is added to not define the whole route, just add that 'edit' at the end of route that we have retrived
+  }
 }
