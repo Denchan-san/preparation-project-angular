@@ -12,6 +12,7 @@ export class AppComponent {
 
   defaultQuestion = 'pet';
   answer: string;
+  genders = ['male', 'female'];
 
   suggestUserName() {
     const suggestedName = 'Superuser';
