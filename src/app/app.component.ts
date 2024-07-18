@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loadedPosts = [];
+  loadedPosts: Post[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -52,7 +52,8 @@ export class AppComponent implements OnInit {
         return postsArray;
     }))
     .subscribe( posts => {
-      console.log(posts);
+      // ...
+      this.loadedPosts = posts;
     });
   }
 }
