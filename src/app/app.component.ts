@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   loadedPosts: Post[] = [];
+  isFetching = false;
 
   constructor(private http: HttpClient) {}
 
@@ -39,6 +40,7 @@ export class AppComponent implements OnInit {
   }
 
   private fetchPost() {
+    this.isFetching = true;
     this.http
     .get<{ [key: string] : Post }>('https://ng-complete-guide-d3567-default-rtdb.europe-west1.firebasedatabase.app/post.json')
     .pipe(
@@ -52,7 +54,7 @@ export class AppComponent implements OnInit {
         return postsArray;
     }))
     .subscribe( posts => {
-      // ...
+      this.isFetching = false;
       this.loadedPosts = posts;
     });
   }
