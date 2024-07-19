@@ -9,21 +9,19 @@ export class PostService {
   constructor(private http: HttpClient) {}
 
   createAndStorePost(title: string, content: string) {
-    
-  const postData: Post = {title: title, content: content};
-
-  this.http
+    const postData: Post = {title: title, content: content};
+    this.http
      .post<{ name: string }> (
       'https://ng-complete-guide-d3567-default-rtdb.europe-west1.firebasedatabase.app/post.json',
        postData
      )
      .subscribe(responseData => {
        console.log(responseData);
-     }); // .json is exclusive only for Firebase
+    }); // .json is exclusive only for Firebase
   }
 
   fetchPosts() {
-    this.http
+    return this.http
     .get<{ [key: string] : Post }>('https://ng-complete-guide-d3567-default-rtdb.europe-west1.firebasedatabase.app/post.json')
     .pipe(
       map(responseData => {
@@ -34,9 +32,7 @@ export class PostService {
           }
         }
         return postsArray;
-    }))
-    .subscribe( posts => {
-        
-    });
+      })
+    );
   }
 }
