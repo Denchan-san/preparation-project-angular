@@ -36,7 +36,8 @@ export class PostService {
     .get<{ [key: string] : Post }>('https://ng-complete-guide-d3567-default-rtdb.europe-west1.firebasedatabase.app/post.json',
       {
         headers: new HttpHeaders({'Custom-Header' : 'hi'}),
-        params: searchParams
+        params: searchParams,
+        responseType: 'json'
       }
     )
     .pipe(
@@ -61,7 +62,8 @@ export class PostService {
     .delete(
       'https://ng-complete-guide-d3567-default-rtdb.europe-west1.firebasedatabase.app/post.json',
       {
-        observe: 'events'
+        observe: 'events',
+        responseType: 'text'
       }
     ).pipe(
         tap(event => {
